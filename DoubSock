@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+  
+#define BUFSIZE 255
+  
+  int main()
+  {
+	char prbuf[BUFSIZE];
+	int socks[2];
+	socketpair(AF_UNIX,SOCK_STREAM,0,soks);
+	perror("Error?");
+	write(socks[1],"To Child\0",9);
+	if(!fork())
+	{
+		char chbuf[BUFSIZE];
+		int bytes = read(socks[0],chbuf,BUFSIZE);
+		chbuf[bytes] = '\0';
+		printf("%s\n",chbuf);
+		write(socks[1],"To Parent\0");
+		sleep(2);
+		bytes = read(socks[0],chbuf,BUFSIZE);
+	}
+	
+	int bytes = read(socks[0],prbuf,BUFSIZE);
+  	prbuf[bytes] = '\0';
+	printf("%s\n",prbuf);
+	bytes = read(socks[0],prbuf,BUFSIZE);
+	return 0;
+  }
