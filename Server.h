@@ -14,8 +14,7 @@ public:
 	}
 	void start()
 	{
-		boost::asio::async_read_until(client_sock, buf, '\n', boost::bind(&Client_Request::handle_read, this,
-			boost::placeholders::_1, boost::placeholders::_2));
+		boost::asio::async_read_until(client_sock, buf, '\n', boost::bind(&Client_Request::handle_read, this,_1, _2));
 	}
 	~Client_Request() 
 	{
