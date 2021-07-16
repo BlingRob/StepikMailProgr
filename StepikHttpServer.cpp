@@ -4,10 +4,14 @@
 #include "Headers.h"
 #include "Parser.h"
 #include "Server.h"
+#include <unistd.h>
 
 
 int main(int getc,char** getv)
 {
+	
+
+        daemon(0, 0);
 	Parser prs;
 	try
 	{
