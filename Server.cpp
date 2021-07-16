@@ -15,7 +15,7 @@ void Server::run()
 
 void Server::start_accept(Client_Request* req)
 {
-	acc->async_accept(req->socket(), boost::bind(&Server::handle_accept, this, req, boost::placeholders::_1));
+	acc->async_accept(req->socket(), boost::bind(&Server::handle_accept, this, req, _1));
 }
 void Server::handle_accept(Client_Request* req, const boost::system::error_code& err)
 {
