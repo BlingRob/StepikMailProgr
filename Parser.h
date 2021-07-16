@@ -62,6 +62,7 @@ public:
 		else 
 		{
 			std::string content;
+			getline ( file, content, '\0' );
 			file >> content;
 			std::string answer = HTTP_ANSWERS::ok;
 			answer += "Content-length: " + std::to_string(content.size()) + "\r\n";
