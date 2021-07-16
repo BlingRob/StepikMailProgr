@@ -1,6 +1,3 @@
-﻿// StepikHttpServer.cpp: определяет точку входа для приложения.
-//
-
 #include "Headers.h"
 #include "Parser.h"
 #include "Server.h"
@@ -9,8 +6,6 @@
 
 int main(int getc,char** getv)
 {
-	
-
         daemon(0, 0);
 	Parser prs;
 	try
