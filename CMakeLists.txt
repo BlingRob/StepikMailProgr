@@ -11,4 +11,4 @@ if(Boost_FOUND)
   target_link_libraries (${PROJECT_NAME} ${Boost_LIBRARIES})
 endif()
 
-add_executable (StepikHttpServer "StepikHttpServer.cpp" "Headers.h" "Parser.h" "Server.h" "Server.cpp")
+add_executable (final "StepikHttpServer.cpp" "Headers.h" "Parser.h" "Server.h" "Server.cpp")
