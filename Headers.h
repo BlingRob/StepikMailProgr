@@ -7,7 +7,7 @@
 #include <string>
 #include <memory>
 #include <boost/filesystem.hpp>
-#include <queue>
+#include <fstream>
 #include <regex>
 
 // TODO: установите здесь ссылки на дополнительные заголовки, требующиеся для программы.
