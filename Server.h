@@ -14,15 +14,12 @@ public:
 	}
 	void start()
 	{
-		std::cerr << "Client start!" << std::endl;
 		boost::asio::async_read_until(client_sock, buf, '\n', boost::bind(&Client_Request::handle_read, this,
 			boost::placeholders::_1, boost::placeholders::_2));
-		
 	}
 	~Client_Request() 
 	{
 		client_sock.close();
-		std::cerr << "Client died!" << std::endl;
 	}
 private:
 	static const uint16_t BufSize = 255;
@@ -41,7 +38,6 @@ private:
 			std::istream in(&buf);
 			std::string msg;
 			std::getline(in, msg);
-			std::cerr << msg << std::endl;
 			msg = prs.Get(msg, RootPath);
 			client_sock.async_write_some(boost::asio::buffer(msg.c_str(),msg.size()), boost::bind(&Client_Request::handle_write, this,
 				boost::asio::placeholders::error));
