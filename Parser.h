@@ -49,8 +49,8 @@ public:
 	}
 	std::string Get(const std::string& request, const std::string& dir)
 	{
-		std::regex rgx("^(GET) ([a-zA-Z\\/\\.]+)", std::regex_constants::ECMAScript);
-		std::smatch matchs = *std::sregex_iterator(request.begin(), request.end(), rgx);
+		boost::regex rgx("^(GET) ([a-zA-Z\\/\\.]+)", boost::regex_constants::ECMAScript);
+		boost::smatch matchs = *boost::sregex_iterator(request.begin(), request.end(), rgx);
 		std::string absPath = dir + matchs[2].str();
 		std::cerr << absPath << std::endl;
 		std::ifstream file(absPath.c_str());
