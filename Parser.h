@@ -49,12 +49,11 @@ public:
 	}
 	std::string Get(const std::string& request, const std::string& dir)
 	{
-		//std::regex rgx("^(GET) (http://)((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))(:)([1-9]*)([a-zA-z/.]+)", std::regex_constants::ECMAScript);
 		std::regex rgx("^(GET) ([a-zA-Z\\/\\.]+)", std::regex_constants::ECMAScript);
 		std::smatch matchs = *std::sregex_iterator(request.begin(), request.end(), rgx);
 		std::string absPath = dir + matchs[2].str();
 		std::cerr << absPath << std::endl;
-		std::ifstream file(absPath);
+		std::ifstream file(absPath.c_str());
 		for (size_t i = 0; i < matchs.size(); ++i)
 			std::cout << "  submatch " << i << ": " << matchs[i].str() << '\n';
 		
