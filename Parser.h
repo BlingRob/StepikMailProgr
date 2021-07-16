@@ -62,7 +62,15 @@ public:
 		else 
 		{
 			std::string content;
-			getline ( file, content, '\0' );
+			//getline ( file, content, '\0' );
+			char ch;
+			    while (true)
+			    {
+				file.get(ch);
+				if (file.eof())
+					break;
+				content.append(1, ch);
+			    }
 			std::string answer = HTTP_ANSWERS::ok;
 			answer += "Content-length: " + std::to_string(content.size()) + "\r\n";
 			answer += "Content-Type: text/html\r\n\r\n";
