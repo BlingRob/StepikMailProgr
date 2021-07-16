@@ -41,7 +41,7 @@ public:
 			if (!boost::regex_match(vm["ip"].as<std::string>(), res, rgx) || vm["port"].as<uint32_t>() > 65535)
 				return nullptr;
 
-			return std::make_unique<server_options>(vm["ip"].as<std::string>(), vm["port"].as<uint32_t>(), vm["directory"].as<std::string>());
+			return std::unique_ptr<server_options>(new server_options(vm["ip"].as<std::string>(), vm["port"].as<uint32_t>(), vm["directory"].as<std::string>()));
 		}
 		else
 			return nullptr;
