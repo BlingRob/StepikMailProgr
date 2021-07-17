@@ -54,23 +54,13 @@ public:
 		std::string absPath = dir + matchs[2].str();
 		std::cerr << absPath << std::endl;
 		std::ifstream file(absPath.c_str());
-		for (size_t i = 0; i < matchs.size(); ++i)
-			std::cout << "  submatch " << i << ": " << matchs[i].str() << '\n';
 		
 		if (!file.is_open())
 			return std::string(HTTP_ANSWERS::not_found);
 		else 
 		{
 			std::string content;
-			//getline ( file, content, '\0' );
-			char ch;
-			    while (true)
-			    {
-				file.get(ch);
-				if (file.eof())
-					break;
-				content.append(1, ch);
-			    }
+			getline ( file, content, '\0' );
 			std::string answer = HTTP_ANSWERS::ok;
 			answer += "Content-length: " + std::to_string(content.size()) + "\r\n";
 			answer += "Content-Type: text/html\r\n\r\n";
