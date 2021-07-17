@@ -6,6 +6,7 @@
 
 int main(int getc,char** getv)
 {
+	//getopt thread
         daemon(0, 0);
 	Parser prs;
 	try
